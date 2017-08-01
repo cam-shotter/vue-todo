@@ -2,10 +2,10 @@
   <div class='ui centered card'>
     <div class="content" v-show="!isEditing">
       <div class='header'>
-          {{ todo.title }}
+          {{ todo.task }}
       </div>
       <div class='meta'>
-          {{ todo.project }}
+          {{ todo.description }}
       </div>
       <div class='extra content'>
           <span class='right floated edit icon' v-on:click="showForm">
@@ -19,24 +19,24 @@
     <div class="content" v-show="isEditing">
       <div class='ui form'>
         <div class='field'>
-          <label>Title</label>
-          <input type='text' v-model="todo.title" >
+          <label>Task</label>
+          <input type='text' v-model="todo.task" >
         </div>
         <div class='field'>
-          <label>Project</label>
-          <input type='text' v-model="todo.project" >
+          <label>Description</label>
+          <input type='text' v-model="todo.description" >
         </div>
-        <div class='ui two button attached buttons'>
-          <button class='ui basic blue button' v-on:click="hideForm">
-            Close X
+        <div class='ui fluid buttons'>
+          <button class='ui basic green button' v-on:click="hideForm">
+            Confirm
           </button>
         </div>
       </div>
     </div>
-    <div class='ui bottom attached green basic button' v-show="!isEditing &&todo.done" disabled>
+    <div class='ui bottom attached green basic button' v-on:click="revertTodo(todo)" v-show="!isEditing &&todo.done" disabled>
         Completed
     </div>
-    <div class='ui bottom attached red basic button' v-on:click="completeTodo(todo)" v-show="!isEditing && !todo.done">
+    <div class='ui bottom attached blue basic button' v-on:click="completeTodo(todo)" v-show="!isEditing && !todo.done">
         Pending
     </div>
   </div>
@@ -53,6 +53,9 @@
     methods: {
       completeTodo (todo) {
         this.$emit('complete-todo', todo)
+      },
+      revertTodo (todo) {
+        this.$emit('revert-todo', todo)
       },
       deleteTodo (todo) {
         this.$emit('delete-todo', todo)

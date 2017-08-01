@@ -23,20 +23,20 @@ export default {
   data () {
     return {
       todos: [{
-        title: 'Todo A',
-        project: 'Project A',
+        task: 'Task A',
+        description: 'Do thing A',
         done: false
       }, {
-        title: 'Todo B',
-        project: 'Project B',
+        task: 'Task B',
+        description: 'Do thing B',
         done: true
       }, {
-        title: 'Todo C',
-        project: 'Project C',
+        task: 'Task C',
+        description: 'Do thing C',
         done: false
       }, {
-        title: 'Todo D',
-        project: 'Project D',
+        task: 'Task D',
+        description: 'Do thing D',
         done: false
       }]
     }
