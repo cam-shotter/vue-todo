@@ -33,10 +33,10 @@
         </div>
       </div>
     </div>
-    <div class='ui bottom attached green basic button' v-on:click="revertTodo(todo)" v-show="!isEditing &&todo.done" disabled>
+    <div class='ui bottom attached green basic button' v-on:click="toggleTaskComplete(todo)" v-show="!isEditing &&todo.done" disabled>
         Completed
     </div>
-    <div class='ui bottom attached blue basic button' v-on:click="completeTodo(todo)" v-show="!isEditing && !todo.done">
+    <div class='ui bottom attached blue basic button' v-on:click="toggleTaskComplete(todo)" v-show="!isEditing && !todo.done">
         Pending
     </div>
   </div>
@@ -51,11 +51,8 @@
       }
     },
     methods: {
-      completeTodo (todo) {
-        this.$emit('complete-todo', todo)
-      },
-      revertTodo (todo) {
-        this.$emit('revert-todo', todo)
+      toggleTaskComplete (todo) {
+        this.$emit('toggle-task-complete', todo)
       },
       deleteTodo (todo) {
         this.$emit('delete-todo', todo)
