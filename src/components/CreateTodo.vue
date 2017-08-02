@@ -3,6 +3,7 @@
     <button class='ui basic button icon' v-on:click="openForm" v-show="!isCreating">
       <i class='plus icon'></i>
     </button>
+    <h2>Add new task</h2>
     <div class='ui centered card' v-show="isCreating">
       <div class='content'>
         <div class='ui form'>
